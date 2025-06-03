@@ -309,19 +309,27 @@ public class MouseClickPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mainFrame.setVisible(false);
-                try {
-                    Thread.sleep(200);
-                } catch (InterruptedException ex) {
-                    throw new RuntimeException(ex);
-                }
+
                 new Thread(() ->{
+                    try {
+                        Thread.sleep(300); // 让窗口有时间从屏幕上消失
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+
+                    // 进行坐标获取或截图
                     Point clickCoordinate = getClickCoordinate();
-                    xField.setText(String.valueOf((int) clickCoordinate.getX()));
-                    yField.setText(String.valueOf((int) clickCoordinate.getY()));
-                    updateConfig("X", (int) clickCoordinate.getX());
-                    updateConfig("Y", (int) clickCoordinate.getY());
+
+                    SwingUtilities.invokeLater(() -> {
+                        xField.setText(String.valueOf((int) clickCoordinate.getX()));
+                        yField.setText(String.valueOf((int) clickCoordinate.getY()));
+                        updateConfig("X", (int) clickCoordinate.getX());
+                        updateConfig("Y", (int) clickCoordinate.getY());
+
+                        mainFrame.setVisible(true); // 截图完成后再显示窗口
+                    });
                 }).start();
-                mainFrame.setVisible(true);
+
             }
         });
 
