@@ -19,9 +19,15 @@ public class SelectCoordinates {
      */
     public static Point getClickCoordinate() {
         try {
+            // 获取实际屏幕分辨率（物理像素）
+            GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+            DisplayMode dm = gd.getDisplayMode();
+            int screenWidth = dm.getWidth();
+            int screenHeight = dm.getHeight();
+
             // 1. 截取整个屏幕
-            Robot robot = new Robot();
-            Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+            Robot robot = new Robot(gd);
+            Rectangle screenRect = new Rectangle(0, 0, screenWidth, screenHeight);
             BufferedImage screenImage = robot.createScreenCapture(screenRect);
 
             // 2. 创建显示截图的窗口
@@ -68,10 +74,5 @@ public class SelectCoordinates {
             return null;
         }
     }
-
-//    public static void main(String[] args) {
-//        Point clickCoordinate = getClickCoordinate();
-//        System.out.println(clickCoordinate.x +  ", "  + clickCoordinate.y);
-//    }
 
 }
