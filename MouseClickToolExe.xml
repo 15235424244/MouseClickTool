@@ -3,7 +3,7 @@
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
   <jar>D:\code\MouseClickTool\target\MouseClickTool-0.0.1-SNAPSHOT.jar</jar>
-  <outfile>D:\code\MouseClickTool\MouseClickTool.exe</outfile>
+  <outfile>D:\env\ClickTool\MouseClickTool.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
@@ -11,11 +11,15 @@
   <downloadUrl></downloadUrl>
   <supportUrl></supportUrl>
   <stayAlive>false</stayAlive>
-  <restartOnCrash>false</restartOnCrash>
+  <restartOnCrash>true</restartOnCrash>
   <manifest></manifest>
-  <icon></icon>
+  <icon>D:\env\ClickTool\logo.ico</icon>
+  <singleInstance>
+    <mutexName>MouseClickTool</mutexName>
+    <windowTitle></windowTitle>
+  </singleInstance>
   <jre>
-    <path>%JAVA_HOME%;%PATH%</path>
+    <path>jdk</path>
     <requiresJdk>false</requiresJdk>
     <requires64Bit>false</requires64Bit>
     <minVersion></minVersion>
