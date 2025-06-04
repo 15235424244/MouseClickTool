@@ -62,7 +62,6 @@ public class ClickTool {
         int dpi = gdi32.GetDeviceCaps(hdc, 88); // 使用 GDI32 调用
         user32.ReleaseDC(hwnd, hdc);
         double scaling = dpi / 96.0; // 计算缩放比例
-        System.out.println(scaling);
         return new Point((int)(x / scaling), (int)(y / scaling));
     }
 

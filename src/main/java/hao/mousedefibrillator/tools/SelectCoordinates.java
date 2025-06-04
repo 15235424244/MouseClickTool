@@ -19,15 +19,20 @@ public class SelectCoordinates {
      */
     public static Point getClickCoordinate() {
         try {
-            // 获取实际屏幕分辨率（物理像素）
-            GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-            DisplayMode dm = gd.getDisplayMode();
-            int screenWidth = dm.getWidth();
-            int screenHeight = dm.getHeight();
+//            // 获取实际屏幕分辨率（物理像素）
+//            GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+//            DisplayMode dm = gd.getDisplayMode();
+//            int screenWidth = dm.getWidth();
+//            int screenHeight = dm.getHeight();
+//
+//            // 比下面那个截取的高清，但是部分电脑使用截图会出现问题
+//            Robot robot = new Robot(gd);
+//            Rectangle screenRect = new Rectangle(0, 0, screenWidth, screenHeight);
+//            BufferedImage screenImage = robot.createScreenCapture(screenRect);
 
             // 1. 截取整个屏幕
-            Robot robot = new Robot(gd);
-            Rectangle screenRect = new Rectangle(0, 0, screenWidth, screenHeight);
+            Robot robot = new Robot();
+            Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
             BufferedImage screenImage = robot.createScreenCapture(screenRect);
 
             // 2. 创建显示截图的窗口
